@@ -52,80 +52,80 @@ def main():
 
     foldername = 'plots/'
 
-    plt.plot(episodes, losses)
-    plt.plot(shield_episodes, shield_losses)
+    plt.plot(episodes, losses, label='Normal')
+    plt.plot(shield_episodes, shield_losses, label='Shield')
     plt.xlabel("No. of episodes")
     plt.ylabel("No. of losses")
     name = filepath_shield[5:-4] + "-losses-episodes.png"
     plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
-    plt.plot(episodes, window_losses)
-    plt.plot(shield_episodes, shield_window_losses)
+    plt.plot(episodes, window_losses, label='Normal')
+    plt.plot(shield_episodes, shield_window_losses, label='Shield')
     plt.xlabel("No. of episodes")
     plt.ylabel("No. of window-losses")
     name = filepath_shield[5:-4] + "-window-losses-episodes.png"
     plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
-    plt.plot(episodes, window_unsafe)
-    plt.plot(shield_episodes, shield_window_unsafe)
+    plt.plot(episodes, window_unsafe, label='Normal')
+    plt.plot(shield_episodes, shield_window_unsafe, label='Shield')
     plt.xlabel("No. of episodes")
     plt.ylabel("No. of window-unsafe")
     name = filepath_shield[5:-4] + "-window-unsafe-episodes.png"
     plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
-    plt.plot(episodes, avg_score)
-    plt.plot(shield_episodes, shield_avg_score)
+    plt.plot(episodes, avg_score, label='Normal')
+    plt.plot(shield_episodes, shield_avg_score, label='Shield')
     plt.xlabel("No. of episodes")
     plt.ylabel("No. of avg-score")
     name = filepath_shield[5:-4] + "-avg-score-episodes.png"
     plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
-    plt.plot(episodes, window_avg_score)
-    plt.plot(shield_episodes, shield_window_avg_score)
+    plt.plot(episodes, window_avg_score, label='Normal')
+    plt.plot(shield_episodes, shield_window_avg_score, label='Shield')
     plt.xlabel("No. of episodes")
     plt.ylabel("No. of window-avg-score")
     name = filepath_shield[5:-4] + "-window-avg-score-episodes.png"
     plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
-    plt.plot(times, losses)
-    plt.plot(shield_times, shield_losses)
+    plt.plot(times, losses, label='Normal')
+    plt.plot(shield_times, shield_losses, label='Shield')
     plt.xlabel("No. of times")
     plt.ylabel("No. of losses")
     name = filepath_shield[5:-4] + "-losses-times.png"
     plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
-    plt.plot(times, window_losses)
-    plt.plot(shield_times, shield_window_losses)
+    plt.plot(times, window_losses, label='Normal')
+    plt.plot(shield_times, shield_window_losses, label='Shield')
     plt.xlabel("No. of times")
     plt.ylabel("No. of window-losses")
     name = filepath_shield[5:-4] + "-window-losses-times.png"
     plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
-    plt.plot(times, window_unsafe)
-    plt.plot(shield_times, shield_window_unsafe)
+    plt.plot(times, window_unsafe, label='Normal')
+    plt.plot(shield_times, shield_window_unsafe, label='Shield')
     plt.xlabel("No. of times")
     plt.ylabel("No. of window-unsafe")
     name = filepath_shield[5:-4] + "-window-unsafe-times.png"
     plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
-    plt.plot(times, avg_score)
-    plt.plot(shield_times, shield_avg_score)
+    plt.plot(times, avg_score, label='Normal')
+    plt.plot(shield_times, shield_avg_score, label='Shield')
     plt.xlabel("No. of times")
     plt.ylabel("No. of avg-score")
     name = filepath_shield[5:-4] + "-avg-score-times.png"
     plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
-    plt.plot(times, window_avg_score)
-    plt.plot(shield_times, shield_window_avg_score)
+    plt.plot(times, window_avg_score, label='Normal')
+    plt.plot(shield_times, shield_window_avg_score, label='Shield')
     plt.xlabel("No. of times")
     plt.ylabel("No. of window-avg-score")
     name = filepath_shield[5:-4] + "-window-avg-score-times.png"
