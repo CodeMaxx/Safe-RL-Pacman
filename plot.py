@@ -67,6 +67,7 @@ def main():
     plt.ylabel("No. of window-losses")
     # plt.axes.set_major_locator(myLocator)
     plt.savefig(filepath_shield[:-4] + "-window-losses-episodes.png")
+    plt.gcf().clear()
 
     plt.plot(episodes, window_unsafe)
     plt.plot(shield_episodes, shield_window_unsafe)
@@ -74,6 +75,7 @@ def main():
     plt.ylabel("No. of window-unsafe")
     # plt.axes.set_major_locator(myLocator)
     plt.savefig(filepath_shield[:-4] + "-window-unsafe-episodes.png")
+    plt.gcf().clear()
 
     plt.plot(episodes, avg_score)
     plt.plot(shield_episodes, shield_avg_score)
@@ -81,6 +83,7 @@ def main():
     plt.ylabel("No. of avg-score")
     # plt.axes.set_major_locator(myLocator)
     plt.savefig(filepath_shield[:-4] + "-avg-score-episodes.png")
+    plt.gcf().clear()
 
     plt.plot(episodes, window_avg_score)
     plt.plot(shield_episodes, shield_window_avg_score)
@@ -88,7 +91,7 @@ def main():
     plt.ylabel("No. of window-avg-score")
     # plt.axes.set_major_locator(myLocator)
     plt.savefig(filepath_shield[:-4] + "-window-avg-score-episodes.png")
-
+    plt.gcf().clear()
 
     plt.plot(times, losses)
     plt.plot(shield_times, shield_losses)
@@ -104,6 +107,7 @@ def main():
     plt.ylabel("No. of window-losses")
     # plt.axes.set_major_locator(myLocator)
     plt.savefig(filepath_shield[:-4] + "-window-losses-times.png")
+    plt.gcf().clear()
 
     plt.plot(times, window_unsafe)
     plt.plot(shield_times, shield_window_unsafe)
@@ -111,6 +115,7 @@ def main():
     plt.ylabel("No. of window-unsafe")
     # plt.axes.set_major_locator(myLocator)
     plt.savefig(filepath_shield[:-4] + "-window-unsafe-times.png")
+    plt.gcf().clear()
 
     plt.plot(times, avg_score)
     plt.plot(shield_times, shield_avg_score)
@@ -118,6 +123,7 @@ def main():
     plt.ylabel("No. of avg-score")
     # plt.axes.set_major_locator(myLocator)
     plt.savefig(filepath_shield[:-4] + "-avg-score-times.png")
+    plt.gcf().clear()
 
     plt.plot(times, window_avg_score)
     plt.plot(shield_times, shield_window_avg_score)
@@ -125,7 +131,7 @@ def main():
     plt.ylabel("No. of window-avg-score")
     # plt.axes.set_major_locator(myLocator)
     plt.savefig(filepath_shield[:-4] + "-window-avg-score-times.png")
-
+    plt.gcf().clear()
 
 
 if __name__ == '__main__':
