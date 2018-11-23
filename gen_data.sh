@@ -2,8 +2,8 @@
 
 declare -a algorithm_list=("ApproximateQAgent" "PacmanQAgent")
 declare -a horizon_list=(1000 2000)
-declare -a instance_grid_list=("smallClassic")
-# declare -a instance_grid_list=("smallGrid" "mediumGrid")
+# declare -a instance_grid_list=("smallClassic")
+declare -a instance_grid_list=("smallGrid" "mediumGrid")
 
 for algorithm in "${algorithm_list[@]}"
 do
