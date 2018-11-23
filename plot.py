@@ -42,7 +42,6 @@ def main():
         lines = lines.split("\n")[:-1]
         for line in lines:
             data = line.split()
-            # print(data)
             shield_losses.append(data[0])
             shield_window_losses.append(data[1])
             shield_window_unsafe.append(data[2])
@@ -51,86 +50,86 @@ def main():
             shield_episodes.append(data[5])
             shield_times.append(int(float(data[6])*1000))
 
-    # print(losses)
-    # print(episodes)
+    foldername = 'plots/'
+
     plt.plot(episodes, losses)
     plt.plot(shield_episodes, shield_losses)
     plt.xlabel("No. of episodes")
     plt.ylabel("No. of losses")
-    # plt.axes.set_major_locator(myLocator)
-    plt.savefig(filepath_shield[:-4] + "-losses-episodes.png")
+    name = filepath_shield[5:-4] + "-losses-episodes.png"
+    plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
     plt.plot(episodes, window_losses)
     plt.plot(shield_episodes, shield_window_losses)
     plt.xlabel("No. of episodes")
     plt.ylabel("No. of window-losses")
-    # plt.axes.set_major_locator(myLocator)
-    plt.savefig(filepath_shield[:-4] + "-window-losses-episodes.png")
+    name = filepath_shield[5:-4] + "-window-losses-episodes.png"
+    plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
     plt.plot(episodes, window_unsafe)
     plt.plot(shield_episodes, shield_window_unsafe)
     plt.xlabel("No. of episodes")
     plt.ylabel("No. of window-unsafe")
-    # plt.axes.set_major_locator(myLocator)
-    plt.savefig(filepath_shield[:-4] + "-window-unsafe-episodes.png")
+    name = filepath_shield[5:-4] + "-window-unsafe-episodes.png"
+    plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
     plt.plot(episodes, avg_score)
     plt.plot(shield_episodes, shield_avg_score)
     plt.xlabel("No. of episodes")
     plt.ylabel("No. of avg-score")
-    # plt.axes.set_major_locator(myLocator)
-    plt.savefig(filepath_shield[:-4] + "-avg-score-episodes.png")
+    name = filepath_shield[5:-4] + "-avg-score-episodes.png"
+    plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
     plt.plot(episodes, window_avg_score)
     plt.plot(shield_episodes, shield_window_avg_score)
     plt.xlabel("No. of episodes")
     plt.ylabel("No. of window-avg-score")
-    # plt.axes.set_major_locator(myLocator)
-    plt.savefig(filepath_shield[:-4] + "-window-avg-score-episodes.png")
+    name = filepath_shield[5:-4] + "-window-avg-score-episodes.png"
+    plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
     plt.plot(times, losses)
     plt.plot(shield_times, shield_losses)
     plt.xlabel("No. of times")
     plt.ylabel("No. of losses")
-    # plt.axes.set_major_locator(myLocator)
-    plt.savefig(filepath_shield[:-4] + "-losses-times.png")
+    name = filepath_shield[5:-4] + "-losses-times.png"
+    plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
     plt.plot(times, window_losses)
     plt.plot(shield_times, shield_window_losses)
     plt.xlabel("No. of times")
     plt.ylabel("No. of window-losses")
-    # plt.axes.set_major_locator(myLocator)
-    plt.savefig(filepath_shield[:-4] + "-window-losses-times.png")
+    name = filepath_shield[5:-4] + "-window-losses-times.png"
+    plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
     plt.plot(times, window_unsafe)
     plt.plot(shield_times, shield_window_unsafe)
     plt.xlabel("No. of times")
     plt.ylabel("No. of window-unsafe")
-    # plt.axes.set_major_locator(myLocator)
-    plt.savefig(filepath_shield[:-4] + "-window-unsafe-times.png")
+    name = filepath_shield[5:-4] + "-window-unsafe-times.png"
+    plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
     plt.plot(times, avg_score)
     plt.plot(shield_times, shield_avg_score)
     plt.xlabel("No. of times")
     plt.ylabel("No. of avg-score")
-    # plt.axes.set_major_locator(myLocator)
-    plt.savefig(filepath_shield[:-4] + "-avg-score-times.png")
+    name = filepath_shield[5:-4] + "-avg-score-times.png"
+    plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
     plt.plot(times, window_avg_score)
     plt.plot(shield_times, shield_window_avg_score)
     plt.xlabel("No. of times")
     plt.ylabel("No. of window-avg-score")
-    # plt.axes.set_major_locator(myLocator)
-    plt.savefig(filepath_shield[:-4] + "-window-avg-score-times.png")
+    name = filepath_shield[5:-4] + "-window-avg-score-times.png"
+    plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
 
