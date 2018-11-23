@@ -59,6 +59,35 @@ def main():
     plt.ylabel("No. of losses")
     # plt.axes.set_major_locator(myLocator)
     plt.savefig(filepath_shield[:-4] + "-losses-episodes.png")
+    plt.gcf().clear()
+
+    plt.plot(episodes, window_losses)
+    plt.plot(shield_episodes, shield_window_losses)
+    plt.xlabel("No. of episodes")
+    plt.ylabel("No. of window-losses")
+    # plt.axes.set_major_locator(myLocator)
+    plt.savefig(filepath_shield[:-4] + "-window-losses-episodes.png")
+
+    plt.plot(episodes, window_unsafe)
+    plt.plot(shield_episodes, shield_window_unsafe)
+    plt.xlabel("No. of episodes")
+    plt.ylabel("No. of window-unsafe")
+    # plt.axes.set_major_locator(myLocator)
+    plt.savefig(filepath_shield[:-4] + "-window-unsafe-episodes.png")
+
+    plt.plot(episodes, avg_score)
+    plt.plot(shield_episodes, shield_avg_score)
+    plt.xlabel("No. of episodes")
+    plt.ylabel("No. of avg-score")
+    # plt.axes.set_major_locator(myLocator)
+    plt.savefig(filepath_shield[:-4] + "-avg-score-episodes.png")
+
+    plt.plot(episodes, window_avg_score)
+    plt.plot(shield_episodes, shield_window_avg_score)
+    plt.xlabel("No. of episodes")
+    plt.ylabel("No. of window-avg-score")
+    # plt.axes.set_major_locator(myLocator)
+    plt.savefig(filepath_shield[:-4] + "-window-avg-score-episodes.png")
 
 
 
