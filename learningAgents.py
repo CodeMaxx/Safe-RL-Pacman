@@ -179,6 +179,7 @@ class ReinforcementAgent(ValueEstimationAgent):
         self.epsilon = float(epsilon)
         self.alpha = float(alpha)
         self.discount = float(gamma)
+        self.total_lose = 0
 
     ################################
     # Controls needed for Crawler  #
@@ -232,6 +233,7 @@ class ReinforcementAgent(ValueEstimationAgent):
         if not 'lastWindowAccumRewards' in self.__dict__:
             self.lastWindowAccumRewards = 0.0
         self.lastWindowAccumRewards += state.getScore()
+        if state.isLose(): self.total_lose += 1
 
         NUM_EPS_UPDATE = 10
         if self.episodesSoFar % NUM_EPS_UPDATE == 0:
@@ -252,6 +254,7 @@ class ReinforcementAgent(ValueEstimationAgent):
             print '\tEpisode took %.2f seconds' % (time.time() - self.episodeStartTime)
             self.lastWindowAccumRewards = 0.0
             self.episodeStartTime = time.time()
+            print '\tLosses:', self.total_lose
 
         if self.episodesSoFar == self.numTraining:
             msg = 'Training Done (turning off epsilon and alpha)'
