@@ -271,14 +271,15 @@ class ClassicGameRules:
     def __init__(self, timeout=30):
         self.timeout = timeout
 
-    def newGame( self, layout, pacmanAgent, ghostAgents, display, quiet = False, catchExceptions=False):
+    def newGame( self, layout, pacmanAgent, ghostAgents, display, quiet = False, catchExceptions=False, shield=False):
         agents = [pacmanAgent] + ghostAgents[:layout.getNumGhosts()]
         initState = GameState()
         initState.initialize( layout, len(ghostAgents) )
-        game = Game(agents, display, self, catchExceptions=catchExceptions)
+        game = Game(agents, display, self, catchExceptions=catchExceptions, shield=shield)
         game.state = initState
         self.initialState = initState.deepCopy()
         self.quiet = quiet
+        self.shield = shield
         return game
 
     def process(self, state, game):
@@ -515,6 +516,7 @@ def readCommand( argv ):
                       help='A recorded game file (pickle) to replay', default=None)
     parser.add_option('-a','--agentArgs',dest='agentArgs',
                       help='Comma separated values sent to agent. e.g. "opt1=val1,opt2,opt3=val3"')
+    parser.add_option('-s', '--shield', action='store_true', help='Turn On SafeRL shield')
     parser.add_option('-x', '--numTraining', dest='numTraining', type='int',
                       help=default('How many episodes are training (suppresses output)'), default=0)
     parser.add_option('--frameTime', dest='frameTime', type='float',
@@ -543,7 +545,7 @@ def readCommand( argv ):
     if options.numTraining > 0:
         args['numTraining'] = options.numTraining
         if 'numTraining' not in agentOpts: agentOpts['numTraining'] = options.numTraining
-    pacman = pacmanType(**agentOpts) # Instantiate Pacman with agentArgs
+    pacman = pacmanType(shield=options.shield, **agentOpts) # Instantiate Pacman with agentArgs
     args['pacman'] = pacman
 
     # Don't display training games
@@ -568,6 +570,7 @@ def readCommand( argv ):
         args['display'] = graphicsDisplay.PacmanGraphics(options.zoom, frameTime = options.frameTime)
     args['numGames'] = options.numGames
     args['record'] = options.record
+    args['shield'] = options.shield
     args['catchExceptions'] = options.catchExceptions
     args['timeout'] = options.timeout
 
@@ -625,7 +628,7 @@ def replayGame( layout, actions, display ):
 
     display.finish()
 
-def runGames( layout, pacman, ghosts, display, numGames, record, numTraining = 0, catchExceptions=False, timeout=30 ):
+def runGames( layout, pacman, ghosts, display, numGames, record, shield, numTraining = 0, catchExceptions=False, timeout=30 ):
     import __main__
     __main__.__dict__['_display'] = display
 
@@ -642,7 +645,7 @@ def runGames( layout, pacman, ghosts, display, numGames, record, numTraining = 0
         else:
             gameDisplay = display
             rules.quiet = False
-        game = rules.newGame( layout, pacman, ghosts, gameDisplay, beQuiet, catchExceptions)
+        game = rules.newGame( layout, pacman, ghosts, gameDisplay, beQuiet, catchExceptions, shield)
         game.run()
         if not beQuiet: games.append(game)
 

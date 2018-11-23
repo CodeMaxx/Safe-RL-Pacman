@@ -38,12 +38,13 @@ class QLearningAgent(ReinforcementAgent):
 		- self.getLegalActions(state)
 		  which returns legal actions for a state
 	"""
-	def __init__(self, **args):
+	def __init__(self, shield=False, **args):
 		"You can initialize Q-values here..."
 		ReinforcementAgent.__init__(self, **args)
 
 		"*** YOUR CODE HERE ***"
 		self.q_values = util.Counter()
+		self.shield = shield
 
 
 	def getQValue(self, state, action):

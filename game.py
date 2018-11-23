@@ -36,7 +36,7 @@ class Agent:
 
     def registerInitialState(self, state): # inspects the starting state
     """
-    def __init__(self, index=0):
+    def __init__(self, shield=False, index=0):
         self.index = index
 
     def getAction(self, state):
@@ -515,7 +515,7 @@ class Game:
     The Game manages the control flow, soliciting actions from agents.
     """
 
-    def __init__( self, agents, display, rules, startingIndex=0, muteAgents=False, catchExceptions=False ):
+    def __init__( self, agents, display, rules, startingIndex=0, muteAgents=False, catchExceptions=False, shield=False ):
         self.agentCrashed = False
         self.agents = agents
         self.display = display
@@ -524,6 +524,7 @@ class Game:
         self.gameOver = False
         self.muteAgents = muteAgents
         self.catchExceptions = catchExceptions
+        self.shield = shield
         self.moveHistory = []
         self.totalAgentTimes = [0 for agent in agents]
         self.totalAgentTimeWarnings = [0 for agent in agents]
