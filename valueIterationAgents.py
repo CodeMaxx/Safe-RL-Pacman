@@ -4,7 +4,7 @@
 # educational purposes provided that (1) you do not distribute or publish
 # solutions, (2) you retain this notice, and (3) you provide clear
 # attribution to UC Berkeley, including a link to http://ai.berkeley.edu.
-# 
+#
 # Attribution Information: The Pacman AI projects were developed at UC Berkeley.
 # The core projects and autograders were primarily created by John DeNero
 # (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
@@ -68,9 +68,9 @@ class ValueIterationAgent(ValueEstimationAgent):
 				for action in action_list:
 					val = 0
 					transition_prob = mdp.getTransitionStatesAndProbs(state,action)
-					
+
 					for transition in transition_prob:
-					
+
 						next_state = transition[0]
 						prob = transition[1]
 						reward = mdp.getReward(state,action,next_state)
@@ -82,9 +82,9 @@ class ValueIterationAgent(ValueEstimationAgent):
 				self.values[state] = val_max
 
 			for state in state_list:
-				curr_values[state] = self.values[state]	
+				curr_values[state] = self.values[state]
 
-		print self.values	
+		print self.values
 
 
 	def getValue(self, state):
@@ -130,7 +130,7 @@ class ValueIterationAgent(ValueEstimationAgent):
 
 		if not action_list:
 			return None
-		
+
 		val_max = 'NA'
 		action_max = 'NA'
 
