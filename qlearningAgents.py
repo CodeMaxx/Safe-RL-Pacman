@@ -149,7 +149,7 @@ class QLearningAgent(ReinforcementAgent):
 					px -= 1
 				elif action == 'North':
 					py += 1
-				else action == 'South':
+				elif action == 'South':
 					py -= 1
 				num_ghosts = len(state.data.agentStates) - 1
 
