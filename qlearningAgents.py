@@ -45,6 +45,7 @@ class QLearningAgent(ReinforcementAgent):
 		"*** YOUR CODE HERE ***"
 		self.q_values = util.Counter()
 		self.shield = shield
+		self.discarded = []
 
 
 	def getQValue(self, state, action):
@@ -145,6 +146,7 @@ class QLearningAgent(ReinforcementAgent):
 
 			sorted(legal_qval, key=lambda x: x[1], reverse=True)
 			i = 0
+			self.discarded = []
 			# print(legal_qval)
 			while not safe and len(legalActions) != 0:
 				# if action not in legalActions:
@@ -168,6 +170,7 @@ class QLearningAgent(ReinforcementAgent):
 					# print(dist)
 					if dist < 2.0:
 						safe = False
+						self.discarded.append(action)
 						legalActions.remove(action)
 						break
 				# if action == 'Stop':
@@ -196,6 +199,10 @@ class QLearningAgent(ReinforcementAgent):
 		max_q = self.computeValueFromQValues(nextState)
 
 		self.q_values[(state, action)] = (1-self.alpha)*self.getQValue(state, action) + self.alpha*(reward + self.discount*max_q)
+
+		if self.shield:
+			for ac in self.discarded:
+				self.q_values[(state, ac)] = (1-self.alpha)*self.getQValue(state, action) + self.alpha*(-500 + self.discount*max_q)
 
 
 	def getPolicy(self, state):
