@@ -4,7 +4,7 @@
 # educational purposes provided that (1) you do not distribute or publish
 # solutions, (2) you retain this notice, and (3) you provide clear
 # attribution to UC Berkeley, including a link to http://ai.berkeley.edu.
-# 
+#
 # Attribution Information: The Pacman AI projects were developed at UC Berkeley.
 # The core projects and autograders were primarily created by John DeNero
 # (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
@@ -72,7 +72,7 @@ class QLearningAgent(ReinforcementAgent):
 
 		if not action_list:
 			return 0.0
-		
+
 		for action in action_list:
 			q_val = self.getQValue(state, action)
 			if max_q == 'NA' or q_val > max_q :
@@ -119,7 +119,7 @@ class QLearningAgent(ReinforcementAgent):
 		legalActions = self.getLegalActions(state)
 		action = None
 		"*** YOUR CODE HERE ***"
-		
+
 		if not legalActions :
 			action = None
 
@@ -143,7 +143,7 @@ class QLearningAgent(ReinforcementAgent):
 		"*** YOUR CODE HERE ***"
 
 		max_q = self.computeValueFromQValues(nextState)
-		
+
 		self.q_values[(state, action)] = (1-self.alpha)*self.getQValue(state, action) + self.alpha*(reward + self.discount*max_q)
 
 
@@ -216,7 +216,7 @@ class ApproximateQAgent(PacmanQAgent):
 		for key in featureVector:
 			Q += featureVector[key]*weights[key]
 
-		return Q 
+		return Q
 
 
 
@@ -230,7 +230,7 @@ class ApproximateQAgent(PacmanQAgent):
 
 		if not action_list:
 			max_q = 0.0
-		
+
 		for act in action_list:
 			q_val = self.getQValue(nextState, act)
 			if max_q == 'NA' or q_val > max_q :
