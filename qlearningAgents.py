@@ -46,6 +46,7 @@ class QLearningAgent(ReinforcementAgent):
 		self.q_values = util.Counter()
 		self.shield = shield
 		self.discarded = []
+		self.num_discarded = 0
 
 
 	def getQValue(self, state, action):
@@ -201,6 +202,7 @@ class QLearningAgent(ReinforcementAgent):
 		self.q_values[(state, action)] = (1-self.alpha)*self.getQValue(state, action) + self.alpha*(reward + self.discount*max_q)
 
 		if self.shield:
+			self.num_discarded += len(self.discarded)
 			for ac in self.discarded:
 				self.q_values[(state, ac)] = (1-self.alpha)*self.getQValue(state, action) + self.alpha*(-500 + self.discount*max_q)
 
@@ -303,6 +305,7 @@ class ApproximateQAgent(PacmanQAgent):
 			weights[key] = weights[key] + self.alpha*difference*featureVector[key]
 
 		if self.shield:
+			self.num_discarded += len(self.discarded)
 			for ac in self.discarded:
 				difference  = -500 + self.discount*max_q - self.getQValue(state, ac)
 

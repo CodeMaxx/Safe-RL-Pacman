@@ -216,8 +216,8 @@ class ReinforcementAgent(ValueEstimationAgent):
 
     def registerInitialState(self, state):
         self.startEpisode()
-        if self.episodesSoFar == 0:
-            print 'Beginning %d episodes of Training' % (self.numTraining)
+        # if self.episodesSoFar == 0:
+        #     print 'Beginning %d episodes of Training' % (self.numTraining)
 
     def final(self, state):
         """
@@ -232,30 +232,40 @@ class ReinforcementAgent(ValueEstimationAgent):
             self.episodeStartTime = time.time()
         if not 'lastWindowAccumRewards' in self.__dict__:
             self.lastWindowAccumRewards = 0.0
+        if not 'cumulativeTime' in self.__dict__:
+            self.cumulativeTime = 0.0
+        if not 'lastloss' in self.__dict__:
+            self.lastloss = 0
+
         self.lastWindowAccumRewards += state.getScore()
         if state.isLose(): self.total_lose += 1
 
         NUM_EPS_UPDATE = 10
         if self.episodesSoFar % NUM_EPS_UPDATE == 0:
-            print 'Reinforcement Learning Status:'
+            # print 'Reinforcement Learning Status:'
             windowAvg = self.lastWindowAccumRewards / float(NUM_EPS_UPDATE)
+            diff = time.time() - self.episodeStartTime
+            self.cumulativeTime += diff
+            # print '\tEpisode took %.2f seconds' % (diff)
             if self.episodesSoFar <= self.numTraining:
                 trainAvg = self.accumTrainRewards / float(self.episodesSoFar)
-                print '\tCompleted %d out of %d training episodes' % (
-                       self.episodesSoFar,self.numTraining)
-                print '\tAverage Rewards over all training: %.2f' % (
-                        trainAvg)
+                # print '\tCompleted %d out of %d training episodes' % (
+                #        self.episodesSoFar,self.numTraining)
+
+                # print '\tAverage Rewards over all training: %.2f' % (
+                #         trainAvg)
+                print self.total_lose, self.total_lose - self.lastloss, self.num_discarded, trainAvg, windowAvg, self.episodesSoFar, self.cumulativeTime
+                self.num_discarded = 0
             else:
                 testAvg = float(self.accumTestRewards) / (self.episodesSoFar - self.numTraining)
-                print '\tCompleted %d test episodes' % (self.episodesSoFar - self.numTraining)
-                print '\tAverage Rewards over testing: %.2f' % testAvg
-            print '\tAverage Rewards for last %d episodes: %.2f'  % (
-                    NUM_EPS_UPDATE,windowAvg)
-            print '\tEpisode took %.2f seconds' % (time.time() - self.episodeStartTime)
+                # print '\tCompleted %d test episodes' % (self.episodesSoFar - self.numTraining)
+                # print '\tAverage Rewards over testing: %.2f' % testAvg
+            # print '\tAverage Rewards for last %d episodes: %.2f'  % (NUM_EPS_UPDATE,windowAvg)
             self.lastWindowAccumRewards = 0.0
             self.episodeStartTime = time.time()
-            print '\tLosses:', self.total_lose
+            # print '\tLosses:', self.total_lose
+            self.lastloss = self.total_lose
 
         if self.episodesSoFar == self.numTraining:
             msg = 'Training Done (turning off epsilon and alpha)'
-            print '%s\n%s' % (msg,'-' * len(msg))
+            # print '%s\n%s' % (msg,'-' * len(msg))
