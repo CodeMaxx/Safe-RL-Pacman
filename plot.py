@@ -58,6 +58,8 @@ def main():
     plt.ylabel("No. of losses")
     name = filepath_shield[5:-4] + "-losses-episodes.png"
     plt.legend(loc='lower right')
+    plt.title(filepath_shield[5:-4])
+    plt.title(filepath_shield[5:-4])
     plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
@@ -67,6 +69,7 @@ def main():
     plt.ylabel("No. of window-losses")
     name = filepath_shield[5:-4] + "-window-losses-episodes.png"
     plt.legend(loc='lower right')
+    plt.title(filepath_shield[5:-4])
     plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
@@ -76,6 +79,7 @@ def main():
     plt.ylabel("No. of window-unsafe")
     name = filepath_shield[5:-4] + "-window-unsafe-episodes.png"
     plt.legend(loc='lower right')
+    plt.title(filepath_shield[5:-4])
     plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
@@ -85,6 +89,7 @@ def main():
     plt.ylabel("No. of avg-score")
     name = filepath_shield[5:-4] + "-avg-score-episodes.png"
     plt.legend(loc='lower right')
+    plt.title(filepath_shield[5:-4])
     plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
@@ -94,6 +99,7 @@ def main():
     plt.ylabel("No. of window-avg-score")
     name = filepath_shield[5:-4] + "-window-avg-score-episodes.png"
     plt.legend(loc='lower right')
+    plt.title(filepath_shield[5:-4])
     plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
@@ -103,6 +109,7 @@ def main():
     plt.ylabel("No. of avg-score")
     name = filepath_shield[5:-4] + "-avg-score-times.png"
     plt.legend(loc='lower right')
+    plt.title(filepath_shield[5:-4])
     plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
@@ -112,6 +119,7 @@ def main():
     plt.ylabel("No. of window-avg-score")
     name = filepath_shield[5:-4] + "-window-avg-score-times.png"
     plt.legend(loc='lower right')
+    plt.title(filepath_shield[5:-4])
     plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
