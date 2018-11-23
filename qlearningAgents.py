@@ -129,19 +129,26 @@ class QLearningAgent(ReinforcementAgent):
 
 		else:
 			action = self.computeActionFromQValues(state)
-
+		# if action not in legalActions:
+		# 	print("WTFFFF")
 		action_copy = action
 
 		if self.shield:
 			safe = False
 			legal_qval = []
-			legalActions.remove(action)
-			for action in legalActions:
-				legal_qval.append((action, self.getQValue(state,action)))
+			# print(legalActions)
+			# legalActions.remove(action)
+
+			for ac in legalActions:
+				if ac != action:
+					legal_qval.append((ac, self.getQValue(state,ac)))
 
 			sorted(legal_qval, key=lambda x: x[1], reverse=True)
 			i = 0
+			# print(legal_qval)
 			while not safe and len(legalActions) != 0:
+				# if action not in legalActions:
+				# 	print("WTFFFFF")
 				px, py = state.getPacmanPosition()
 				if action == 'East':
 					px += 1
@@ -151,18 +158,23 @@ class QLearningAgent(ReinforcementAgent):
 					py += 1
 				elif action == 'South':
 					py -= 1
+
 				num_ghosts = len(state.data.agentStates) - 1
 
 				safe = True
 				for j in range(num_ghosts):
 					ghostpos = state.getGhostPosition(j+1)
 					dist = manhattanDistance((px, py), ghostpos)
-					if dist < 2:
+					# print(dist)
+					if dist < 2.0:
 						safe = False
 						legalActions.remove(action)
 						break
-
-				action = legal_qval[i][0]
+				# if action == 'Stop':
+				# 	safe = False
+				# print(action)
+				if not safe and i < len(legal_qval):
+					action = legal_qval[i][0]
 				i += 1
 
 			if len(legalActions) == 0:
