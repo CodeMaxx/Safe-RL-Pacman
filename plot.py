@@ -57,6 +57,7 @@ def main():
     plt.xlabel("No. of episodes")
     plt.ylabel("No. of losses")
     name = filepath_shield[5:-4] + "-losses-episodes.png"
+    plt.legend()
     plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
