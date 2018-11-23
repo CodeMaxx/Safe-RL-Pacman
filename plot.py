@@ -56,10 +56,10 @@ def main():
 
     plt.plot(episodes, losses, label='Normal', linewidth=3)
     plt.plot(shield_episodes, shield_losses, label='Shield', linewidth=3)
-    plt.xlabel("No. of episodes")
-    plt.ylabel("No. of losses")
+    plt.xlabel("No. of Episodes")
+    plt.ylabel("Total losses")
     name = filepath_shield[5:-4] + "-losses-episodes.png"
-    plt.legend(loc='lower right')
+    plt.legend(loc='upper left')
     plt.title(filepath_shield[5:-4])
     plt.title(filepath_shield[5:-4])
     plt.savefig(foldername + name, label=name)
@@ -67,28 +67,28 @@ def main():
 
     plt.plot(episodes, window_losses, label='Normal', linewidth=3)
     plt.plot(shield_episodes, shield_window_losses, label='Shield', linewidth=3)
-    plt.xlabel("No. of episodes")
-    plt.ylabel("No. of window-losses")
+    plt.xlabel("No. of Episodes")
+    plt.ylabel("Total losses in last 10 episodes")
     name = filepath_shield[5:-4] + "-window-losses-episodes.png"
-    plt.legend(loc='lower right')
+    plt.legend(loc='upper right')
     plt.title(filepath_shield[5:-4])
     plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
     plt.plot(episodes, window_unsafe, label='Normal', linewidth=3)
     plt.plot(shield_episodes, shield_window_unsafe, label='Shield', linewidth=3)
-    plt.xlabel("No. of episodes")
-    plt.ylabel("No. of window-unsafe")
+    plt.xlabel("No. of Episodes")
+    plt.ylabel("Total Unsafe Actions in last 10 Episodes")
     name = filepath_shield[5:-4] + "-window-unsafe-episodes.png"
-    plt.legend(loc='lower right')
+    plt.legend(loc='upper right')
     plt.title(filepath_shield[5:-4])
     plt.savefig(foldername + name, label=name)
     plt.gcf().clear()
 
     plt.plot(episodes, avg_score, label='Normal', linewidth=3)
     plt.plot(shield_episodes, shield_avg_score, label='Shield', linewidth=3)
-    plt.xlabel("No. of episodes")
-    plt.ylabel("No. of avg-score")
+    plt.xlabel("No. of Episodes")
+    plt.ylabel("Running Average Score")
     name = filepath_shield[5:-4] + "-avg-score-episodes.png"
     plt.legend(loc='lower right')
     plt.title(filepath_shield[5:-4])
@@ -97,8 +97,8 @@ def main():
 
     plt.plot(episodes, window_avg_score, label='Normal', linewidth=3)
     plt.plot(shield_episodes, shield_window_avg_score, label='Shield', linewidth=3)
-    plt.xlabel("No. of episodes")
-    plt.ylabel("No. of window-avg-score")
+    plt.xlabel("No. of Episodes")
+    plt.ylabel("Average Score in last 10 Episodes")
     name = filepath_shield[5:-4] + "-window-avg-score-episodes.png"
     plt.legend(loc='lower right')
     plt.title(filepath_shield[5:-4])
@@ -108,7 +108,7 @@ def main():
     plt.plot(times, avg_score, label='Normal', linewidth=3)
     plt.plot(shield_times, shield_avg_score, label='Shield', linewidth=3)
     plt.xlabel("Time (in ms)")
-    plt.ylabel("No. of avg-score")
+    plt.ylabel("Running Average Score")
     name = filepath_shield[5:-4] + "-avg-score-times.png"
     plt.legend(loc='lower right')
     plt.title(filepath_shield[5:-4])
@@ -118,7 +118,7 @@ def main():
     plt.plot(times, window_avg_score, label='Normal', linewidth=3)
     plt.plot(shield_times, shield_window_avg_score, label='Shield', linewidth=3)
     plt.xlabel("Time (in ms)")
-    plt.ylabel("No. of window-avg-score")
+    plt.ylabel("Average Score in last 10 Episodes")
     name = filepath_shield[5:-4] + "-window-avg-score-times.png"
     plt.legend(loc='lower right')
     plt.title(filepath_shield[5:-4])
