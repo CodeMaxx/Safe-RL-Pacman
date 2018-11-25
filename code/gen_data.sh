@@ -13,8 +13,8 @@ do
 		for instance in "${instance_grid_list[@]}"
 		do
 			echo "		$instance"
-			python pacman.py -p $algorithm -x $horizon -n $horizon -l $instance -s -g DirectionalGhost > data/$algorithm-$instance-shield-intelligent-$horizon.dat
-			python pacman.py -p $algorithm -x $horizon -n $horizon -l $instance -g DirectionalGhost > data/$algorithm-$instance-normal-intelligent-$horizon.dat
+			python pacman.py -p $algorithm -x $horizon -n $horizon -l $instance -s -g DirectionalGhost > ../data/$algorithm-$instance-shield-intelligent-$horizon.dat
+			python pacman.py -p $algorithm -x $horizon -n $horizon -l $instance -g DirectionalGhost > ../data/$algorithm-$instance-normal-intelligent-$horizon.dat
 		done
 	done
 done

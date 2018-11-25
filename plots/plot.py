@@ -51,7 +51,7 @@ def main():
             shield_episodes.append(data[5])
             shield_times.append(int(float(data[6])*1000))
 
-    foldername = 'plots/' + filepath_shield[5:-4] + "/"
+    foldername = filepath_shield[5:-4] + "/"
     os.system('mkdir ' + foldername)
 
     plt.plot(episodes, losses, label='Normal', linewidth=3)
